@@ -14,7 +14,7 @@ public class LoginController {
     @RequestMapping("login")
     public String loadLoginPage(@RequestParam String name, ModelMap model) {
         model.put("name", name);
-        log.debug("request param is: " + name);
+        log.debug("request param is: " + name.toString());
         
         return "login.html";
     }
