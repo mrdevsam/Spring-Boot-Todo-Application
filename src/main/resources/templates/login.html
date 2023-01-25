@@ -9,7 +9,17 @@
 
 <body>
     <h1 th:text="LogIn">L</h1>
-    <p>welcome user: <span th:text="${name}">x</span></p>
+    
+    <form method="post">
+        <hr>
+        <label>Name: </label>
+        <input type="text" name="name">
+        <br>
+        <label>Password: </label>
+        <input type="password" name="password">
+        <br>
+        <input type="submit">
+    </form>
 </body>
 
 </html>
