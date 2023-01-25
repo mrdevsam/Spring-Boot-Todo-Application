@@ -1,6 +1,8 @@
 package com.example.secondcourse.webappdemo.controllers;
 
-import org.springframework.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class sayHelloController {
