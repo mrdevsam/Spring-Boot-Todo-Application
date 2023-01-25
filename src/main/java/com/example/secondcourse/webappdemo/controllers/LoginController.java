@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.ModelMap;
 import lombok.extern.slf4j.Slf4j;
-import com.example.srcondcourse.webappdemo.services.*;
+import com.example.secondcourse.webappdemo.services.*;
 
 @Slf4j
 @Controller
