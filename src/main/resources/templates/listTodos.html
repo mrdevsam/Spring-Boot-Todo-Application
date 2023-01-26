@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+
+<body>
+<h3>Welcome: <span th:text="#{name}">x</span></h3>
+<hr>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>TargetDate</th>
+                <th>isDone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tdo:${todos}">
+                <td th:text="${tdo.id}">1</td>
+                <td th:text="${tdo.description}">SomeThings</td>
+                <td th:text="${tdo.targetDate}">xxxx-xx-xx</td>
+                <td th:text="${tdo.isDone}">false</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
