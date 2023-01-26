@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @ToString
-public record Todo{
+public class Todo{
     
     private int id;
     private String username;
