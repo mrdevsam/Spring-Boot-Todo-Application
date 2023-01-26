@@ -17,4 +17,8 @@ public class TodoService {
 		todoList.add(new Todo(3, "myUsernameX","Learn Full Stack Development", 
 				LocalDate.now().plusYears(3), false ));
     }
+    
+    public List<Todo> findByUsername(String username) {
+        return todoList;
+    }
 }
