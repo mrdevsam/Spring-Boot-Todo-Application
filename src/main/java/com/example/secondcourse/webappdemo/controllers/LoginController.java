@@ -8,6 +8,7 @@ import com.example.secondcourse.webappdemo.services.*;
 
 @Slf4j
 @Controller
+@SessionAttributes("name")
 public class LoginController {
     
     private AuthenticationService authService;

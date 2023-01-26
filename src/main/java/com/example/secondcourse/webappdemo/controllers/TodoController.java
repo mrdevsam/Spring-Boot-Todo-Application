@@ -8,6 +8,7 @@ import com.example.secondcourse.webappdemo.model.Todo;
 import java.util.*;
 
 @Controller
+@SessionAttributes("name")
 public class TodoController {
     
     private TodoService todoService;
@@ -17,7 +18,7 @@ public class TodoController {
     }
     
     @RequestMapping("list-todos")
-    public String listAllTodos(ModelMap) {
+    public String listAllTodos(ModelMap model) {
         List<Todo> todos = todoService.findByUsername("myUsernameX");
         model.addAttribute("todos", todos);
         return "listTodos.html";
