@@ -12,6 +12,6 @@ public class Todo{
     private String username;
     private String description;
     private LocalDate targetDate;
-    private boolean isDone
+    private boolean isDone;
     
 }
