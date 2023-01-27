@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import com.example.secondcourse.webappdemo.services.TodoService;
 import com.example.secondcourse.webappdemo.model.Todo;
 import java.util.*;
+import java.time.LocalDate;
 
 @Controller
 @SessionAttributes("name")
@@ -34,6 +35,6 @@ public class TodoController {
         String username = model.get("name").toString();
         todoService.addTodo(username, description, LocalDate.now().plusYears(1), false);
         
-        return "redirect:listTodos.html"
+        return "redirect:list-todos";
     }
 }
