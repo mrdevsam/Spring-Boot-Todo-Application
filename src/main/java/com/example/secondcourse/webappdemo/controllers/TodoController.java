@@ -23,4 +23,17 @@ public class TodoController {
         model.addAttribute("todos", todos);
         return "listTodos.html";
     }
+    
+    @GetMapping("add-todo")
+    public String gotoCreateNewTodo() {
+        return "createOrUpdateTodo.html";
+    }
+    
+    @PostMapping("add-todo")
+    public String addNewTodo(@RequestParam String description, ModelMap model) {
+        String username = model.get("name").toString();
+        todoService.addTodo(username, description, LocalDate.now().plusYears(1), false);
+        
+        return "redirect:listTodos.html"
+    }
 }
