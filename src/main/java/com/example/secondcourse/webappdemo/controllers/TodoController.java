@@ -3,10 +3,12 @@ package com.example.secondcourse.webappdemo.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import com.example.secondcourse.webappdemo.services.TodoService;
 import com.example.secondcourse.webappdemo.model.Todo;
 import java.util.*;
 import java.time.LocalDate;
+import jakarta.validation.Valid;
 
 @Controller
 @SessionAttributes("name")
@@ -35,7 +37,12 @@ public class TodoController {
     }
     
     @PostMapping("add-todo")
-    public String addNewTodo(ModelMap model, Todo tD) {
+    public String addNewTodo(ModelMap model, @Valid Todo tD, BindingResult result) {
+        
+        if (result.hasErrors()) {
+            return "createOrUpdateTodo.html";
+        }
+        
         String username = model.get("name").toString();
         todoService.addTodo(username, tD.getDescription(), LocalDate.now().plusYears(1), false);
         
