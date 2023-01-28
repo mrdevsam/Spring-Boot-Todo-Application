@@ -30,7 +30,7 @@ public class TodoController {
     @GetMapping("add-todo")
     public String gotoCreateNewTodo(ModelMap model) {
         String username = model.get("name").toString();
-        Todo newTodo = new Todo(0, username, "Default Description", LocalDate.now().plusYears(1), false);
+        Todo newTodo = new Todo(0, username, "", LocalDate.now().plusYears(1), false);
         model.put("newTodo", newTodo);
         
         return "createOrUpdateTodo.html";
