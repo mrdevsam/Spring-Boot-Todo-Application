@@ -1,21 +1,7 @@
 package com.example.secondcourse.webappdemo.model;
-import java.time.LocalDate;
-import lombok.*;
-//import jakarta.validation.constraints.Size;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@ToString
-public class Todo{
-    
-    private int id;
-    private String username;
-    
-    //@Size(min = 10, message = "Please enter at least 10 characters...")
-    private String description;
-    
-    private LocalDate targetDate;
-    private boolean isDone;
-    
-}
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+public record Todo(@Id @GeneratedValue(strategy = GenerationType.AUTO) int id, String username, @Min(value=3) String description, LocalDate targetDate, boolean isDone) {}

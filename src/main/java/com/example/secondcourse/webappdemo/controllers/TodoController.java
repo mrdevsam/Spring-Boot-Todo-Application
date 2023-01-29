@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.ModelMap;
 //import org.springframework.validation.BindingResult;
-import com.example.secondcourse.webappdemo.services.TodoService;
+import com.example.secondcourse.webappdemo.services.TodoServiceImpl;
 import com.example.secondcourse.webappdemo.model.Todo;
 import java.util.*;
 import java.time.LocalDate;
@@ -14,16 +14,16 @@ import java.time.LocalDate;
 @SessionAttributes("name")
 public class TodoController {
     
-    private TodoService todoService;
+    private TodoServiceImpl todoServiceImpl;
     
-    public TodoController(TodoService todoService) {
-        this.todoService = todoService;
+    public TodoController(TodoServiceImpl todoServiceImpl) {
+        this.todoServiceImpl = todoServiceImpl;
     }
     
     @RequestMapping("list-todos")
     public String listAllTodos(ModelMap model) {
-        List<Todo> todos = todoService.findByUsername("myUsernameX");
-        model.addAttribute("todos", todos);
+        
+        model.addAttribute("todoList", todoList);
         return "listTodos.html";
     }
     
