@@ -4,6 +4,7 @@ import com.example.secondcourse.webappdemo.model.Todo;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.function.*;
 
 @Service
 public class TodoService {
@@ -34,6 +35,6 @@ public class TodoService {
         // todo -> todo.getId() == id
         Predicate<? super Todo> predicate = todo -> todo.getId() == id;
         Todo todo = todoList.stream().filter(predicate).findFirst().get();
-        return todoList;
+        todoList.removeIf(predicate);
     }
 }

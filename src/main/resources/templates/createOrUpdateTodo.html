@@ -11,11 +11,11 @@
 <body>
     <div class="container">
         <h2>Enter todo details:</h2>
-        <form method="post" th:object="${newTodo}">
+        <form method="post">
             <label>Description: </label>
-            <input type="text" name="description" minlength="10" th:value="${newTodo.description}" required />
-            <input type="hidden" name="id" th:value="*{id}" />
-            <input type="hidden" name="isDone" th:value="*{isDone}" />
+            <input type="text" name="description" minlength="3" th:value="${newTodo.description}" required />
+            <input type="hidden" name="id" th:value="${newTodo.id}" />
+            <input type="hidden" name="isDone" th:value="${newTodo.isDone}" />
             <hr>
             <input type="submit" class="btn btn-primary" />
         </form>
