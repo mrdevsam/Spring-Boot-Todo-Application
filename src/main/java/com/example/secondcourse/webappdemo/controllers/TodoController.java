@@ -20,12 +20,13 @@ public class TodoController {
         this.todoServiceImpl = todoServiceImpl;
     }
     
-    @RequestMapping("list-todos")
+    @GetMapping("list-todos")
     public String listAllTodos(ModelMap model) {
         
-        model.addAttribute("todoList", todoList);
+        //model.addAttribute("todoList", todoList);
         return "listTodos.html";
     }
+    /*
     
     @GetMapping("add-todo")
     public String gotoCreateNewTodo(ModelMap model) {
@@ -59,5 +60,6 @@ public class TodoController {
         //delete todo
         todoService.deleteById(id);
         return "redirect:list-todos";
-    }
+    } */
+    
 }

@@ -2,6 +2,7 @@ package com.example.secondcourse.webappdemo.controllers;
 
 import org.springframework.stereotype.Controller;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 import com.example.secondcourse.webappdemo.services.*;
 
 @Slf4j

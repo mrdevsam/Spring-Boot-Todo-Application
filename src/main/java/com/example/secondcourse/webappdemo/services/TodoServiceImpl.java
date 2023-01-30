@@ -1,10 +1,12 @@
 package com.example.secondcourse.webappdemo.services;
 
+import org.springframework.stereotype.Service;
 import com.example.secondcourse.webappdemo.model.Todo;
 import com.example.secondcourse.webappdemo.repositories.TodoRepo;
 import java.util.*;
 
-public interface TodoServiceImpl implements TodoService {
+@Service
+public class TodoServiceImpl implements TodoService {
     
     private TodoRepo todoRepo;
     
@@ -13,22 +15,21 @@ public interface TodoServiceImpl implements TodoService {
     }
     
     @Override
-    Set<Todo> getTodos() {
-        
+    public Set<Todo> getTodos() {
+        return null;
     }
     
     @Override
-    Todo findById(int id) {
-        
+    public Todo findById(int id) {
+        return null;
     }
     
     @Override
-    void deleteById(int idToDelete) {
-        
+    public void deleteById(int idToDelete) {
     }
     
     @Override
-    Todo saveTodo(Todo td) {
-        
+    public Todo saveTodo(Todo td) {
+        return null;
     }
 }
