@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<h3>Welcome: <span th:text="${name}">x</span></h3>
+<h3>Welcome</h3>
 <hr>
 <div class="container">
     <table class="table">
@@ -22,12 +22,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="tdo:${todos}">
+            <tr th:each="tdo:${todoList}">
                 <td th:text="${tdo.id}">1</td>
                 <td th:text="${tdo.description}">SomeThings</td>
                 <td th:text="${tdo.targetDate}">xxxx-xx-xx</td>
                 <td th:text="${tdo.isDone}">false</td>
                 <td><a th:href="@{'delete-todo?id=' + ${tdo.id}}" class="text-white btn btn-warning">delete</a></td>
+                <td><a th:href="@{'update-todo?id=' + ${tdo.id}}" class="text-white btn btn-primary">delete</a></td>
             </tr>
         </tbody>
     </table>

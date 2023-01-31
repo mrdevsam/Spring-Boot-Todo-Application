@@ -22,8 +22,8 @@ public class TodoController {
     
     @GetMapping("list-todos")
     public String listAllTodos(ModelMap model) {
-        
-        //model.addAttribute("todoList", todoList);
+        var todoList = todoServiceImpl.getTodos();
+        model.addAttribute("todoList", todoList);
         return "listTodos.html";
     }
     /*

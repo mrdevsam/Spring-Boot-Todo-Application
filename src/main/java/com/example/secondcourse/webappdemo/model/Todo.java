@@ -1,13 +1,21 @@
 package com.example.secondcourse.webappdemo.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import lombok.*;
 
 @Entity
-public record Todo(
-	@Id @GeneratedValue(strategy = GenerationType.AUTO) 
-	int id, 
-	String userName,  
-	String description, 
-	LocalDate targetDate, 
-	boolean isDone) {}
+@Data
+public class Todo {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
+	private String userName;
+	private String description;
+	
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	private LocalDate targetDate;
+	private boolean isDone;
+}
