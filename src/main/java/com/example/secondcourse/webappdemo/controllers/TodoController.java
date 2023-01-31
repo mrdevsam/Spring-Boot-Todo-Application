@@ -3,6 +3,7 @@ package com.example.secondcourse.webappdemo.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.ModelMap;
+import lombok.extern.slf4j.Slf4j;
 //import org.springframework.validation.BindingResult;
 import com.example.secondcourse.webappdemo.services.TodoServiceImpl;
 import com.example.secondcourse.webappdemo.model.Todo;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 //import jakarta.validation.Valid;
 
 @Controller
-@SessionAttributes("name")
+@Slf4j
 public class TodoController {
     
     private TodoServiceImpl todoServiceImpl;
@@ -54,12 +55,11 @@ public class TodoController {
         
         return "redirect:list-todos";
     }
-    
+    */
     @GetMapping("delete-todo")
-    public String deleteTodo(@RequestParam int id) {
-        //delete todo
-        todoService.deleteById(id);
+    public String deletetodo(@RequestParam int id) {
+        log.debug("deleting id: " + Integer.toString(id));
+        todoServiceImpl.deleteById(id);
         return "redirect:list-todos";
-    } */
-    
+    }     
 }
