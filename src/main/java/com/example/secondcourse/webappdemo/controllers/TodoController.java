@@ -4,12 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.ModelMap;
 import lombok.extern.slf4j.Slf4j;
-//import org.springframework.validation.BindingResult;
+import org.springframework.validation.BindingResult;
 import com.example.secondcourse.webappdemo.services.TodoServiceImpl;
 import com.example.secondcourse.webappdemo.model.Todo;
 import java.util.*;
 import java.time.LocalDate;
-//import jakarta.validation.Valid;
+import jakarta.validation.Valid;
 
 @Controller
 @Slf4j
@@ -37,12 +37,16 @@ public class TodoController {
     }
     
     @PostMapping("add-todo")
-    public String addNewTodo(@Valid Todo tD, BindingResult result) {
+    public String addNewTodo(ModelMap model, @Valid Todo newTodo, BindingResult result) {
         
         if (result.hasErrors()) {
+        	var erMsg = result.getFieldError().toString();
+        	log.warn(erMsg);
+        	model.put("newTodo", newTodo);
             return "createOrUpdateTodo.html";
+            
         } else {
-            todoServiceImpl.saveTodo(tD);
+            todoServiceImpl.saveTodo(newTodo);
             return "redirect:list-todos";
         }
     }

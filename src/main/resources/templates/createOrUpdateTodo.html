@@ -13,12 +13,11 @@
         <h2>Enter todo details:</h2>
         <form method="post">
             <label>Description: </label>
-            <input type="text" th:value="${newTodo.description}" required />
+            <input type="text" th:field="${newTodo.description}" required />
             <br>
             <label>Target Date: </label>
-            <input type="date" th:value="${newTodo.targetDate}" required />
-            <input type="hidden" name="id" th:value="${newTodo.id}" />
-            <input type="hidden" name="isDone" th:value="${newTodo.isDone}" />
+            <input type="date" th:field="${newTodo.targetDate}" required />
+            <input type="hidden" th:field="${newTodo.id}" />
             <hr>
             <input type="submit" class="btn btn-primary" />
         </form>
