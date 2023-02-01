@@ -27,35 +27,26 @@ public class TodoController {
         model.addAttribute("todoList", todoList);
         return "listTodos.html";
     }
-    /*
+    
     
     @GetMapping("add-todo")
     public String gotoCreateNewTodo(ModelMap model) {
-        String username = model.get("name").toString();
-        Todo newTodo = new Todo(0, username, "", LocalDate.now().plusYears(1), false);
+        Todo newTodo = new Todo();
         model.put("newTodo", newTodo);
-        
         return "createOrUpdateTodo.html";
     }
     
     @PostMapping("add-todo")
-    public String addNewTodo(ModelMap model, Todo tD) {
+    public String addNewTodo(@Valid Todo tD, BindingResult result) {
         
-        //if (result.hasErrors()) {
-        //    return "createOrUpdateTodo.html";
-        //}
-
-        //if (tD.getDescription().length() < 10) {
-        //	String errorMsgA = "Please input at least 10 characters!!!";
-        //	model.put("errorMsgA", errorMsgA);
-        //	return "createOrUpdateTodo.html";
-        //}
-        String username = model.get("name").toString();
-        todoService.addTodo(username, tD.getDescription(), LocalDate.now().plusYears(1), false);
-        
-        return "redirect:list-todos";
+        if (result.hasErrors()) {
+            return "createOrUpdateTodo.html";
+        } else {
+            todoServiceImpl.saveTodo(tD);
+            return "redirect:list-todos";
+        }
     }
-    */
+    
     @GetMapping("delete-todo")
     public String deletetodo(@RequestParam int id) {
         log.debug("deleting id: " + Integer.toString(id));

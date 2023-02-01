@@ -13,7 +13,10 @@
         <h2>Enter todo details:</h2>
         <form method="post">
             <label>Description: </label>
-            <input type="text" name="description" minlength="3" th:value="${newTodo.description}" required />
+            <input type="text" th:value="${newTodo.description}" required />
+            <br>
+            <label>Target Date: </label>
+            <input type="date" th:value="${newTodo.targetDate}" required />
             <input type="hidden" name="id" th:value="${newTodo.id}" />
             <input type="hidden" name="isDone" th:value="${newTodo.isDone}" />
             <hr>
