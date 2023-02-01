@@ -9,13 +9,11 @@ import com.example.secondcourse.webappdemo.services.*;
 @Controller
 public class WelcomeController {
     
-    // localhost:8080/login
-    @GetMapping("/")
+    // localhost:8080/
+    @GetMapping({"", "/", "index"})
     public String loadWelcomePage() {
-        
         log.debug("inside welcome controller");
-        return "index.html";
-        
+        return "welcome.html";
     }
     
 }
