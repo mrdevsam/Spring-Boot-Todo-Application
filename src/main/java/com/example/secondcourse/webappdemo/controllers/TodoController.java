@@ -56,5 +56,25 @@ public class TodoController {
         log.debug("deleting id: " + Integer.toString(id));
         todoServiceImpl.deleteById(id);
         return "redirect:list-todos";
-    }     
+    }
+
+    @GetMapping("update-todo")
+    public String gotoUpdateTodo(ModelMap model, @RequestParam int id) {
+         var newTodo = todoServiceImpl.findById(id);
+         model.put("newTodo", newTodo);
+         return "createOrUpdateTodo.html";
+    }
+    
+    @PostMapping("update-todo")
+    public String updateTodo(ModelMap model, @Valid Todo newTodo, BindingResult result) {
+        if (result.hasErrors()) {
+           	var erMsg = result.getFieldError().toString();
+            log.warn(erMsg);
+            model.put("newTodo", newTodo);
+           	return "createOrUpdateTodo.html";    
+         } else {
+            todoServiceImpl.saveTodo(newTodo);
+            return "redirect:list-todos";
+          }
+    }
 }
