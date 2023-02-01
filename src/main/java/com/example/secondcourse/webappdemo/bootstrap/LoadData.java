@@ -28,6 +28,7 @@ public class LoadData implements CommandLineRunner {
 		Todo todo = new Todo();
 		todo.setDescription("Complete task A");
 		todo.setTargetDate(LocalDate.now().plusYears(3));
+		todo.setStatus(Status.Pending);
 		tdserv.saveTodo(todo);
 		System.out.println("Todo loaded.....");
 	}

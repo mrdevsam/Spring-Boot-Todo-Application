@@ -17,14 +17,17 @@
             <tr>
                 <th>Description</th>
                 <th>TargetDate</th>
-                <th>isDone</th>
+                <th>Status</th>
+                <th>Delete</th>
+                <th>Update</th>
+
             </tr>
         </thead>
         <tbody>
             <tr th:each="tdo:${todoList}">
                 <td th:text="${tdo.description}">SomeThings</td>
                 <td th:text="${tdo.targetDate}">xxxx-xx-xx</td>
-                <td th:text="${tdo.isDone}">false</td>
+                <td th:text="${tdo.status}"></td>
                 <td><a th:href="@{'delete-todo?id=' + ${tdo.id}}" class="text-white btn btn-warning">Delete</a></td>
                 <td><a th:href="@{'update-todo?id=' + ${tdo.id}}" class="text-white btn btn-primary">Update</a></td>
             </tr>

@@ -23,5 +23,10 @@ public class Todo {
 	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private LocalDate targetDate;
 	
-	private boolean isDone;
+	@Enumrrated(value = EnumType.STRING)
+	private Status status;
+}
+
+public enum Status {
+    Completed, Pending
 }

@@ -11,13 +11,18 @@
 <body>
     <div class="container">
         <h2>Enter todo details:</h2>
+        <hr>
         <form method="post">
             <label>Description: </label>
             <input type="text" th:field="${newTodo.description}" required />
-            <br>
+            <br><br>
             <label>Target Date: </label>
             <input type="date" th:field="${newTodo.targetDate}" required />
-            <input type="hidden" th:field="${newTodo.id}" />
+            <br><br>
+            <label>Status</label>
+            <select th:field="${newTodo.status}">
+                <option th:each="singleSt : ${T(com.example.secondcourse.webappdemo.model.Status).values()}" th:value="${singleSt.name()}" th:text="${singleSt.name()}">val</option>
+            </select>
             <hr>
             <input type="submit" class="btn btn-primary" />
         </form>
