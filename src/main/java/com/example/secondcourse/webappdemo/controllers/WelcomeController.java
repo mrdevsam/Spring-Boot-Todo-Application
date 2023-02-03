@@ -7,6 +7,7 @@ import com.example.secondcourse.webappdemo.services.*;
 
 @Slf4j
 @Controller
+@SessionAttributes("name")
 public class WelcomeController {
     
     // localhost:8080/
