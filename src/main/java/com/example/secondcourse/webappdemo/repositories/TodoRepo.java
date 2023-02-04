@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.example.secondcourse.webappdemo.model.Todo;
 
 public interface TodoRepo extends CrudRepository<Todo, Integer> {
-    public Todo findByUserName(String userName);
+    public Todo findByUsername(String username);
 }
