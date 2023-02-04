@@ -40,7 +40,7 @@
             <tr th:each="tdo:${todoList}">
                 <td th:text="${tdo.description}">SomeThings</td>
                 <td th:text="${tdo.targetDate}">xxxx-xx-xx</td>
-                <td th:text="${tdo.status}"></td>
+                <td th:text="${tdo.sts}"></td>
                 <td><a th:href="@{'delete-todo?id=' + ${tdo.id}}" class="text-white btn btn-warning">Delete</a></td>
                 <td><a th:href="@{'update-todo?id=' + ${tdo.id}}" class="text-white btn btn-primary">Update</a></td>
             </tr>

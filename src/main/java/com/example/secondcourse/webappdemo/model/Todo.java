@@ -13,16 +13,16 @@ public class Todo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+
+	private String username;
 	
 	@NotBlank
 	@Size(min=3, message="please enter at least 3 characters!!!")
 	private String description;
-
-	private String username;
 	
 	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private LocalDate targetDate;
 	
 	@Enumerated(value = EnumType.STRING)
-	private Status status;
+	private Status sts;
 }

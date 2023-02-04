@@ -34,7 +34,7 @@
             <input type="date" th:field="${newTodo.targetDate}" required />
             <br><br>
             <label>Status</label>
-            <select th:field="${newTodo.status}">
+            <select th:field="${newTodo.sts}">
                 <option th:each="singleSt : ${T(com.example.secondcourse.webappdemo.model.Status).values()}" th:value="${singleSt.name()}" th:text="${singleSt.name()}">val</option>
             </select>
             <hr>

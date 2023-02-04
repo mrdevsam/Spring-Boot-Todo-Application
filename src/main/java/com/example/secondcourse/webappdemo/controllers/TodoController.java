@@ -7,8 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import com.example.secondcourse.webappdemo.services.TodoService;
-import com.example.secondcourse.webappdemo.model.Todo;
+import com.example.secondcourse.webappdemo.repositories.TodoRepo;
+import com.example.secondcourse.webappdemo.model.*;
 import java.util.*;
 import java.time.LocalDate;
 import jakarta.validation.Valid;
@@ -18,17 +18,18 @@ import jakarta.validation.Valid;
 @SessionAttributes("name")
 public class TodoController {
     
-    private TodoService todoServiceImpl;
+    private TodoRepo todoRp;
     
     
-    public TodoController(TodoService todoServiceImpl) {
-        this.todoServiceImpl = todoServiceImpl;
+    public TodoController(TodoRepo todoRp) {
+        this.todoRp = todoRp;
     }
     
     @GetMapping("list-todos")
     public String listAllTodos(ModelMap model) {
     	log.debug("inside todo controller");
-        var todoList = todoServiceImpl.getTodos();
+    	String username = getLoggedinUsername(model);
+        var todoList = todoRp.findByUsername(username);
         model.addAttribute("todoList", todoList);
         return "listTodos.html";
     }
@@ -36,7 +37,7 @@ public class TodoController {
     
     @GetMapping("add-todo")
     public String gotoCreateNewTodo(ModelMap model) {
-        Todo newTodo = new Todo();
+    	Todo newTodo = new Todo();
         model.put("newTodo", newTodo);
         log.debug("going to create new todo");
         return "createTodoPage.html";
@@ -52,10 +53,10 @@ public class TodoController {
             return "createTodoPage.html";
             
         } else {
-        	String usrname = model.get("name").toString();
-        	newTodo.setUsername(usrname);
+        	String username = getLoggedinUsername(model);
+        	newTodo.setUsername(username);
         	newTodo.setId(id);
-            todoServiceImpl.saveTodo(newTodo);
+            todoRp.save(newTodo);
             log.debug("saving new todo by id: " + Integer.toString(id));
             return "redirect:list-todos";
         }
@@ -64,13 +65,13 @@ public class TodoController {
     @GetMapping("delete-todo")
     public String deletetodo(@RequestParam int id) {
         log.debug("deleting todo by id: " + Integer.toString(id));
-        todoServiceImpl.deleteById(id);
+        todoRp.deleteById(id);
         return "redirect:list-todos";
     }
 
     @GetMapping("update-todo")
     public String gotoUpdateTodo(ModelMap model, @RequestParam int id) {
-         var newTodo = todoServiceImpl.findById(id).get();
+         var newTodo = todoRp.findById(id).get();
          model.addAttribute("newTodo", newTodo);
          log.debug("going to update an existing todo by id: " + Integer.toString(id));
          return "createTodoPage.html";
