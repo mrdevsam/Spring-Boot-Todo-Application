@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.ModelMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import com.example.secondcourse.webappdemo.services.TodoService;
 import com.example.secondcourse.webappdemo.model.Todo;
 import java.util.*;
@@ -50,6 +52,8 @@ public class TodoController {
             return "createTodoPage.html";
             
         } else {
+        	String usrname = model.get("name").toString();
+        	newTodo.setUsername(usrname);
         	newTodo.setId(id);
             todoServiceImpl.saveTodo(newTodo);
             log.debug("saving new todo by id: " + Integer.toString(id));
@@ -70,6 +74,11 @@ public class TodoController {
          model.addAttribute("newTodo", newTodo);
          log.debug("going to update an existing todo by id: " + Integer.toString(id));
          return "createTodoPage.html";
+    }
+
+    private String getLoggedinUsername(ModelMap model) {
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	return auth.getName();
     }
     
 }
