@@ -18,6 +18,7 @@ public class WelcomeController {
     public String loadWelcomePage(ModelMap model) {
     	model.put("name", getLoggedinUsername());
         log.debug("inside welcome controller");
+        log.warn("logged in as: " + getLoggedinUsername());
         return "welcome.html";
     }
 
