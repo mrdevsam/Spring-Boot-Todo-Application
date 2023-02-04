@@ -6,7 +6,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import com.example.secondcourse.webappdemo.services.*;
 
 @Slf4j
 @Controller

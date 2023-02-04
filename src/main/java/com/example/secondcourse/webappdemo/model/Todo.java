@@ -1,7 +1,8 @@
 package com.example.secondcourse.webappdemo.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.hibernate.validator.constraints.NotBlank;
+
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.persistence.*;
 import java.time.LocalDate;

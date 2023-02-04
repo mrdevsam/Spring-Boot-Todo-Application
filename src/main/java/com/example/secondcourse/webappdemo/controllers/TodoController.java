@@ -9,8 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import com.example.secondcourse.webappdemo.repositories.TodoRepo;
 import com.example.secondcourse.webappdemo.model.*;
-import java.util.*;
-import java.time.LocalDate;
 import jakarta.validation.Valid;
 
 @Controller
