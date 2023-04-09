@@ -42,7 +42,7 @@ public class TodoController {
     }
     
     @PostMapping("add-todo")
-    public String addNewTodo(ModelMap model, @Valid Todo newTodo, BindingResult result, @RequestParam int id) {
+    public String addNewTodo(ModelMap model, @Valid Todo newTodo, BindingResult result, @RequestParam long id) {
         
         if (result.hasErrors()) {
         	var erMsg = result.getFieldError().toString();
@@ -55,23 +55,23 @@ public class TodoController {
         	newTodo.setUsername(username);
         	newTodo.setId(id);
             todoRp.save(newTodo);
-            log.debug("saving new todo by id: " + Integer.toString(id));
+            log.debug("saving new todo by id: " + id);
             return "redirect:list-todos";
         }
     }
     
     @GetMapping("delete-todo")
-    public String deletetodo(@RequestParam int id) {
-        log.debug("deleting todo by id: " + Integer.toString(id));
+    public String deletetodo(@RequestParam long id) {
+        log.debug("deleting todo by id: " + id);
         todoRp.deleteById(id);
         return "redirect:list-todos";
     }
 
     @GetMapping("update-todo")
-    public String gotoUpdateTodo(ModelMap model, @RequestParam int id) {
+    public String gotoUpdateTodo(ModelMap model, @RequestParam long id) {
          var newTodo = todoRp.findById(id).get();
          model.addAttribute("newTodo", newTodo);
-         log.debug("going to update an existing todo by id: " + Integer.toString(id));
+         log.debug("going to update an existing todo by id: " + id);
          return "createTodoPage.html";
     }
 

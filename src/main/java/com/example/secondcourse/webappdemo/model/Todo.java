@@ -4,16 +4,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import jakarta.persistence.*;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import java.time.LocalDate;
 import lombok.*;
 
-@Entity
-@Data
+@Document
+@NoArgsConstructor
+@Getter
+@Setter
 public class Todo {
+
+	@Transient
+	public static final String SEQUENCE_NAME = "todo_sequence";
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
 	private String username;
 	
@@ -24,6 +31,5 @@ public class Todo {
 	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private LocalDate targetDate;
 	
-	@Enumerated(value = EnumType.STRING)
 	private Status sts;
 }
